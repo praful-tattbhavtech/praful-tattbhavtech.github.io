@@ -38,6 +38,8 @@ nav {
 
 .logo {
     height: 50px;
+    display: block;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
 }
 
 .nav-links a {
