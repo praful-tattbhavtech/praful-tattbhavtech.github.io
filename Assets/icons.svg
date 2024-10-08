@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-website" viewBox="0 0 24 24">
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" fill="none" stroke="#133EA7" stroke-width="2"/>
+      <line x1="2" y1="7" x2="22" y2="7" stroke="#133EA7" stroke-width="2"/>
+      <circle cx="5" cy="5" r="1" fill="#133EA7"/>
+      <line x1="2" y1="21" x2="22" y2="21" stroke="#133EA7" stroke-width="2"/>
+    </symbol>
+    
+    <symbol id="icon-booking" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="#133EA7" stroke-width="2"/>
+      <line x1="3" y1="10" x2="21" y2="10" stroke="#133EA7" stroke-width="2"/>
+      <line x1="8" y1="2" x2="8" y2="6" stroke="#133EA7" stroke-width="2"/>
+      <line x1="16" y1="2" x2="16" y2="6" stroke="#133EA7" stroke-width="2"/>
+      <circle cx="12" cy="15" r="2" fill="#133EA7"/>
+    </symbol>
+    
+    <symbol id="icon-inventory" viewBox="0 0 24 24">
+      <path d="M3 3h18v18H3z" fill="none" stroke="#133EA7" stroke-width="2"/>
+      <path d="M3 9h18" stroke="#133EA7" stroke-width="2"/>
+      <path d="M3 15h18" stroke="#133EA7" stroke-width="2"/>
+      <path d="M9 3v18" stroke="#133EA7" stroke-width="2"/>
+      <path d="M15 3v18" stroke="#133EA7" stroke-width="2"/>
+    </symbol>
+    
+    <symbol id="icon-scheduling" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="#133EA7" stroke-width="2"/>
+      <path d="M12 6v6l4 2" stroke="#133EA7" stroke-width="2"/>
+      <circle cx="12" cy="12" r="1" fill="#133EA7"/>
+    </symbol>
+  </svg>
