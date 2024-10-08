@@ -3,15 +3,15 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
+    background-color: #95afba; /* Page Background Color: Cadet Gray */
     color: #333;
     scroll-behavior: smooth;
 }
 
 /* Header and Footer */
 header, footer {
-    background-color: #133ea7;
-    color: #ffffff;
+    background-color: #e2f89c; /* Header and Footer Background Color: Mindaro */
+    color: #133ea7; /* Text Color: Egyptian Blue */
     padding: 20px;
     text-align: center;
 }
@@ -20,7 +20,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #133ea7;
+    background-color: #e2f89c; /* Header Background Color: Mindaro */
     padding: 15px;
 }
 
@@ -36,20 +36,21 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #ffffff;
+    color: #133ea7; /* Egyptian Blue for Text */
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ffcc00;
+    color: #bdc4a7; /* Button Non-Hover Color: Sage */
 }
 
 .logo {
     height: 50px;
 }
 
+/* Hero Section */
 .hero {
     background: url('https://via.placeholder.com/1500x600') no-repeat center center;
     background-size: cover;
@@ -72,9 +73,10 @@ nav ul li a:hover {
     margin: 15px 0;
 }
 
+/* Button Styles */
 .btn {
-    background-color: #ffcc00;
-    color: #133ea7;
+    background-color: #bdc4a7; /* Button Non-Hover Color: Sage */
+    color: #133ea7; /* Text Color: Egyptian Blue */
     padding: 15px 30px;
     text-decoration: none;
     font-weight: bold;
@@ -83,7 +85,7 @@ nav ul li a:hover {
 }
 
 .btn:hover {
-    background-color: #e6b800;
+    background-color: #d5e1a3; /* Button Hover Color: Tea Green */
 }
 
 .section {
@@ -95,6 +97,7 @@ nav ul li a:hover {
     margin-bottom: 20px;
 }
 
+/* Services Section */
 .service-cards {
     display: flex;
     justify-content: center;
@@ -115,10 +118,12 @@ nav ul li a:hover {
     transform: translateY(-5px);
 }
 
+/* Process Section */
 .step {
     margin: 20px;
 }
 
+/* Contact Form Styles */
 .contact form {
     max-width: 600px;
     margin: 0 auto;
