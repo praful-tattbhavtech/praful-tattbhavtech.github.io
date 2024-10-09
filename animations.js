@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    document.getElementById('background-animation').appendChild(canvas);
+    const backgroundAnimation = document.getElementById('background-animation');
+    if (backgroundAnimation) {
+        backgroundAnimation.appendChild(canvas);
+    }
 
     let particles = [];
 
@@ -48,24 +51,28 @@ document.addEventListener('DOMContentLoaded', (event) => {
         requestAnimationFrame(animate);
     }
 
-    resizeCanvas();
-    createParticles();
-    animate();
-
-    window.addEventListener('resize', () => {
+    if (backgroundAnimation) {
         resizeCanvas();
         createParticles();
-    });
+        animate();
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+        });
+    }
 
     // Scroll animations
     gsap.registerPlugin(ScrollTrigger);
 
-    // Header background change on scroll
-    ScrollTrigger.create({
-        start: 'top -80',
-        end: 99999,
-        toggleClass: {className: 'scrolled', targets: 'header'}
-    });
+    // Header background change on scroll (only for home page)
+    if (document.body.classList.contains('home-page')) {
+        ScrollTrigger.create({
+            start: 'top -80',
+            end: 99999,
+            toggleClass: {className: 'scrolled', targets: 'header'}
+        });
+    }
 
     // Animate sections on scroll
     gsap.utils.toArray('.section').forEach(section => {

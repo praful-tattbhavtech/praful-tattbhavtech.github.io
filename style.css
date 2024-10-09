@@ -29,8 +29,19 @@ header {
     position: fixed;
     width: 100%;
     z-index: 1000;
-    background-color: var(--egyptian-blue);
     transition: background 0.3s ease;
+}
+
+.child-page header {
+    background-color: var(--egyptian-blue);
+}
+
+.home-page header {
+    background-color: transparent;
+}
+
+.home-page header.scrolled {
+    background-color: var(--egyptian-blue);
 }
 
 nav {
@@ -67,9 +78,13 @@ main {
     padding-top: 80px;
 }
 
+.home-page main {
+    padding-top: 0;
+}
+
 #hero {
     position: relative;
-    height: calc(100vh - 80px);
+    height: 100vh;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, var(--egyptian-blue), var(--maya-blue));
