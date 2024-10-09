@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - Tattbhav Tech</title>
+    <meta name="description" content="Explore Tattbhav Tech's range of custom software solutions for SMBs, including web applications, booking systems, and more.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <header>
         <div class="container">
             <nav>
-                <img src="Assets/TattbhavTech-Logo-1038x514-removebg.png" alt="Tattbhav Tech Logo" class="logo">
+                <a href="index.html" class="logo">tattbhav tech</a>
                 <div class="nav-links">
                     <a href="index.html">Home</a>
                     <a href="about.html">About Us</a>
                     <a href="services.html">Services</a>
                     <a href="process.html">Our Process</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="index.html#contact">Contact</a>
                 </div>
             </nav>
         </div>
@@ -33,8 +37,8 @@
         <section class="section">
             <div class="container">
                 <h2>Web and Mobile Applications</h2>
-                <div class="service-grid">
-                    <div class="service-card">
+                <div class="grid">
+                    <div class="card">
                         <svg class="service-icon">
                             <use xlink:href="#icon-website"></use>
                         </svg>
@@ -47,7 +51,7 @@
                             <li>Performance optimization</li>
                         </ul>
                     </div>
-                    <div class="service-card">
+                    <div class="card">
                         <svg class="service-icon">
                             <use xlink:href="#icon-booking"></use>
                         </svg>
@@ -61,7 +65,7 @@
                             <li>Capacity management</li>
                         </ul>
                     </div>
-                    <div class="service-card">
+                    <div class="card">
                         <svg class="service-icon">
                             <use xlink:href="#icon-inventory"></use>
                         </svg>
@@ -75,7 +79,7 @@
                             <li>Basic reporting and analytics</li>
                         </ul>
                     </div>
-                    <div class="service-card">
+                    <div class="card">
                         <svg class="service-icon">
                             <use xlink:href="#icon-scheduling"></use>
                         </svg>
@@ -92,9 +96,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Rest of the content remains the same -->
-
     </main>
 
     <footer>
@@ -104,7 +105,6 @@
     </footer>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <!-- Content of icons.svg file goes here -->
         <symbol id="icon-website" viewBox="0 0 24 24">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2" fill="none" stroke="#133EA7" stroke-width="2"/>
             <line x1="2" y1="7" x2="22" y2="7" stroke="#133EA7" stroke-width="2"/>
@@ -134,5 +134,8 @@
             <circle cx="12" cy="12" r="1" fill="#133EA7"/>
         </symbol>
     </svg>
+
+    <script src="animations.js"></script>
+
 </body>
 </html>
