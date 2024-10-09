@@ -68,21 +68,45 @@ nav {
 }
 
 #hero {
+    position: relative;
     height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, var(--egyptian-blue), var(--maya-blue));
-    color: var(--alice-blue);
-    position: relative;
     overflow: hidden;
 }
 
+#animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#morphing-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
 .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: var(--alice-blue);
     max-width: 800px;
     margin: 0 auto;
-    text-align: center;
-    z-index: 1;
-    position: relative;
 }
 
 h1 {
@@ -98,11 +122,17 @@ h2 {
 }
 
 #benefits {
-    list-style-type: none;
     display: flex;
     justify-content: center;
     gap: 2rem;
     margin-bottom: 2rem;
+}
+
+#benefits span {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
 }
 
 .cta-button {
@@ -203,22 +233,29 @@ footer {
     padding: 2rem 0;
 }
 
-.particle {
+.morphing-shape {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    pointer-events: none;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
 }
 
-#background-animation {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+.circle {
+    border-radius: 50%;
+}
+
+.square {
+    border-radius: 10%;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    background-color: transparent;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 86.6px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {

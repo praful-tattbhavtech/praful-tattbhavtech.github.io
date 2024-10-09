@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="hero-animations.js"></script>
 </head>
 <body>
     <header>
@@ -28,17 +29,20 @@
 
     <main>
         <section id="hero">
+            <div id="animated-bg">
+                <canvas id="particle-canvas"></canvas>
+                <div id="morphing-shapes"></div>
+            </div>
             <div class="container hero-content">
                 <h1 id="offer">Custom Software Solutions for SMBs</h1>
                 <h2 id="trust">60+ Years Combined Experience in Tech & Business Operations</h2>
-                <ul id="benefits">
-                    <li>Pay Once, Own Forever</li>
-                    <li>Tailored to Your Needs</li>
-                    <li>Scalable Solutions</li>
-                </ul>
+                <div id="benefits">
+                    <span>Pay Once, Own Forever</span>
+                    <span>Tailored to Your Needs</span>
+                    <span>Scalable Solutions</span>
+                </div>
                 <a href="#contact" id="cta" class="cta-button">Transform Your Business Today</a>
             </div>
-            <div id="background-animation"></div>
         </section>
 
         <section id="services" class="section">
