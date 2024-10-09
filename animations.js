@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // Scroll animations
     gsap.registerPlugin(ScrollTrigger);
 
     // Header background change on scroll (only for home page)
@@ -74,8 +73,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // Animate sections on scroll
-    gsap.utils.toArray('.section').forEach(section => {
+    // Fade in sections on scroll
+    gsap.utils.toArray('section').forEach(section => {
         gsap.from(section, {
             opacity: 0,
             y: 50,
@@ -90,13 +89,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     // Animate cards on scroll
-    gsap.utils.toArray('.card').forEach(card => {
-        gsap.from(card, {
+    gsap.utils.toArray('.card, .expertise-item, .approach-item').forEach(item => {
+        gsap.from(item, {
             opacity: 0,
             y: 30,
             duration: 0.8,
             scrollTrigger: {
-                trigger: card,
+                trigger: item,
                 start: "top 90%",
                 end: "bottom 20%",
                 toggleActions: "play none none reverse"
@@ -118,80 +117,45 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
     });
-});
 
-
-
-// About page specific animations
-if (document.body.classList.contains('about-page')) {
-    // Animated text reveal
-    gsap.to('.animated-text', {
-        opacity: 1,
-        duration: 1,
-        y: 0,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: '.hero',
-            start: 'top center',
-        }
+    // Subtle hover animation for grid items
+    const gridItems = document.querySelectorAll('.expertise-item, .approach-item, .card');
+    gridItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            gsap.to(item, { y: -5, duration: 0.3, ease: "power2.out" });
+        });
+        item.addEventListener('mouseleave', () => {
+            gsap.to(item, { y: 0, duration: 0.3, ease: "power2.out" });
+        });
     });
 
-    // Parallax effect for hero background
-    gsap.to('.parallax-bg', {
-        backgroundPosition: `50% ${innerHeight / 2}px`,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '.hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-        }
-    });
+    // About page specific animations
+    if (document.body.classList.contains('about-page')) {
+        gsap.from('.page-header h1', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: 'power3.out',
+        });
 
-    // Animate infographic
-    gsap.from('.infographic', {
-        opacity: 0,
-        x: 50,
-        duration: 1,
-        scrollTrigger: {
-            trigger: '.mission',
-            start: 'top 80%',
-        }
-    });
+        gsap.from('.page-header p', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            delay: 0.3,
+            ease: 'power3.out',
+        });
 
-    // Animate timeline
-    gsap.from('.timeline', {
-        opacity: 0,
-        scaleX: 0,
-        transformOrigin: 'left center',
-        duration: 1,
-        scrollTrigger: {
-            trigger: '.experience',
-            start: 'top 80%',
-        }
-    });
-
-    // Staggered animation for flip cards
-    gsap.from('.flip-card', {
-        opacity: 0,
-        y: 50,
-        stagger: 0.2,
-        duration: 0.8,
-        scrollTrigger: {
-            trigger: '.unique-approach',
-            start: 'top 80%',
-        }
-    });
-
-    // Testimonial carousel
-    const testimonials = document.querySelectorAll('.testimonial-slide');
-    let currentTestimonial = 0;
-
-    function showNextTestimonial() {
-        gsap.to(testimonials[currentTestimonial], { opacity: 0, duration: 0.5 });
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        gsap.to(testimonials[currentTestimonial], { opacity: 1, duration: 0.5 });
+        gsap.from('.expertise-item h3', {
+            textContent: 0,
+            duration: 2,
+            ease: "power1.inOut",
+            snap: { textContent: 1 },
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: '.expertise-grid',
+                start: "top 80%",
+            }
+        });
     }
-
-    setInterval(showNextTestimonial, 5000);
-}
+});

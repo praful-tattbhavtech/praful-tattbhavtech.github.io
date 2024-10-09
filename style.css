@@ -13,16 +13,22 @@
 }
 
 body, html {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: var(--black);
     overflow-x: hidden;
+    background-color: var(--alice-blue);
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    color: var(--egyptian-blue);
 }
 
 header {
@@ -161,13 +167,13 @@ main {
     color: var(--egyptian-blue);
 }
 
-.grid {
+.grid, .expertise-grid, .approach-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
 
-.card {
+.card, .expertise-item, .approach-item {
     background-color: white;
     padding: 2rem;
     border-radius: 10px;
@@ -179,7 +185,7 @@ main {
     text-align: center;
 }
 
-.card:hover {
+.card:hover, .expertise-item:hover, .approach-item:hover {
     transform: translateY(-5px);
 }
 
@@ -189,13 +195,13 @@ main {
     margin-bottom: 1rem;
 }
 
-.card h3 {
+.card h3, .expertise-item h3, .approach-item h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--egyptian-blue);
 }
 
-.card p {
+.card p, .expertise-item p, .approach-item p {
     margin-bottom: 1rem;
 }
 
@@ -264,15 +270,40 @@ footer {
     color: var(--alice-blue);
     text-align: center;
     padding: 2rem 0;
+    margin-top: 4rem;
 }
 
+/* About page specific styles */
+.page-header {
+    background-color: var(--maya-blue);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--egyptian-blue);
+}
+
+.expertise-item h3 {
+    font-size: 3rem;
+    color: var(--aquamarine);
+    margin-bottom: 1rem;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-    h1 {
+    h1, .page-header h1 {
         font-size: 2.5rem;
     }
 
     h2 {
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
 
     #benefits {
@@ -284,7 +315,7 @@ footer {
         display: none;
     }
 
-    .grid {
+    .grid, .expertise-grid, .approach-grid {
         grid-template-columns: 1fr;
     }
 
@@ -298,99 +329,5 @@ footer {
 
     .about-content {
         flex-direction: column;
-    }
-}
-
-/* About page specific styles */
-.about-page .hero {
-    height: 60vh;
-    background-image: url('path-to-your-hero-image.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.about-page .hero h1 {
-    font-size: 3.5rem;
-    color: var(--alice-blue);
-    text-align: center;
-    opacity: 0;
-}
-
-.split-screen {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.text-content, .infographic {
-    flex: 1;
-}
-
-.timeline {
-    position: relative;
-    margin: 2rem 0;
-}
-
-.flip-card {
-    background-color: transparent;
-    width: 300px;
-    height: 200px;
-    perspective: 1000px;
-    margin: 1rem;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    padding: 1rem;
-}
-
-.flip-card-front {
-    background-color: var(--egyptian-blue);
-    color: var(--alice-blue);
-}
-
-.flip-card-back {
-    background-color: var(--maya-blue);
-    color: var(--black);
-    transform: rotateY(180deg);
-}
-
-.testimonial-carousel {
-    overflow: hidden;
-    position: relative;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .split-screen {
-        flex-direction: column;
-    }
-
-    .flip-card {
-        width: 100%;
     }
 }
