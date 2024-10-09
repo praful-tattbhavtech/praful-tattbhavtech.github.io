@@ -182,6 +182,18 @@ footer {
     padding: 20px 0;
 }
 
+.particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+header.scrolled {
+    background-color: var(--egyptian-blue);
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none; /* Consider adding a mobile menu */

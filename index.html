@@ -3,35 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tattbhav Tech - Your Software, Your Way</title>
+    <title>Tattbhav Tech - Custom Software Solutions for SMBs</title>
+    <meta name="description" content="Tattbhav Tech offers affordable, scalable custom software solutions for SMBs. Pay once, own forever. No subscriptions, no vendor lock-in.">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <img src="Assets/TattbhavTech-Logo-1038x514-removebg.png" alt="Tattbhav Tech Logo" class="logo">
-                <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About Us</a>
-                    <a href="services.html">Services</a>
-                    <a href="process.html">Our Process</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </nav>
-        </div>
+        <nav>
+            <img src="Assets/TattbhavTech-Logo-1038x514-removebg.png" alt="Tattbhav Tech Logo" class="logo">
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#process">Our Process</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Your Software, Your Way</h1>
-                <p>Affordable, scalable solutions tailored for SMBs. Pay once, own forever. No subscriptions, no vendor lock-in.</p>
-                <a href="contact.html" class="cta-button">Transform Your Business</a>
+        <section id="hero">
+            <div class="hero-content">
+                <h1 id="offer">Custom Software Solutions for SMBs</h1>
+                <h2 id="trust">60+ Years Combined Experience in Tech & Business Operations</h2>
+                <ul id="benefits">
+                    <li>Pay Once, Own Forever</li>
+                    <li>Tailored to Your Needs</li>
+                    <li>Scalable Solutions</li>
+                </ul>
+                <a href="#contact" id="cta" class="cta-button">Transform Your Business Today</a>
             </div>
+            <div id="background-animation"></div>
         </section>
 
-        <section class="section">
+        <section id="services" class="section">
             <div class="container">
                 <h2>Our Services</h2>
                 <div class="grid">
@@ -67,7 +74,7 @@
             </div>
         </section>
 
-        <section class="section" style="background-color: var(--maya-blue);">
+        <section id="about" class="section" style="background-color: var(--maya-blue);">
             <div class="container">
                 <h2>Our Unique Approach</h2>
                 <div class="grid">
@@ -90,6 +97,50 @@
                 </div>
             </div>
         </section>
+
+        <section id="process" class="section">
+            <div class="container">
+                <h2>Our Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="process-step-number">1</div>
+                        <div class="process-step-content">
+                            <h3>Discovery</h3>
+                            <p>We begin with in-depth workshops to understand your business needs, challenges, and goals.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">2</div>
+                        <div class="process-step-content">
+                            <h3>Solution Design</h3>
+                            <p>Based on the insights from discovery, we create a detailed plan for your custom solution.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">3</div>
+                        <div class="process-step-content">
+                            <h3>Development</h3>
+                            <p>Our experienced team brings your solution to life, using cutting-edge technologies.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">4</div>
+                        <div class="process-step-content">
+                            <h3>Testing and Quality Assurance</h3>
+                            <p>We rigorously test the solution to ensure it meets the highest standards of quality and performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section" style="background-color: var(--maya-blue);">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <p>Ready to transform your business? Contact us today for a free consultation.</p>
+                <a href="mailto:info@tattbhavtech.com" class="cta-button">Contact Us</a>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -99,7 +150,6 @@
     </footer>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <!-- Content of icons.svg file goes here -->
         <symbol id="icon-website" viewBox="0 0 24 24">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2" fill="none" stroke="#133EA7" stroke-width="2"/>
             <line x1="2" y1="7" x2="22" y2="7" stroke="#133EA7" stroke-width="2"/>
@@ -129,5 +179,7 @@
             <circle cx="12" cy="12" r="1" fill="#133EA7"/>
         </symbol>
     </svg>
+
+    <script src="animations.js"></script>
 </body>
 </html>
