@@ -269,72 +269,54 @@ main {
 }
 
 /* New About page specific styles */
-.about-page .hero-section {
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-}
-
-.about-page .hero-section canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.about-page .hero-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    color: white;
-    text-align: center;
-}
-
-.about-page .mission-section {
-    background: linear-gradient(135deg, var(--egyptian-blue), var(--maya-blue));
-    padding: 6rem 0;
-    color: white;
-}
-
-.about-page .mission-content {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.5rem;
-    line-height: 1.6;
-    text-align: center;
-}
-
-.about-page .expertise-section {
-    padding: 6rem 0;
+/* Additional About page styles */
+.about-page {
     background-color: var(--alice-blue);
+}
+
+.about-page .hero-section {
+    background: linear-gradient(135deg, var(--egyptian-blue), var(--maya-blue));
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.about-page .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-page .hero-content h2 {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.about-page .mission-section,
+.about-page .promise-section {
+    background-color: white;
 }
 
 .about-page .expertise-scroll {
     display: flex;
     overflow-x: auto;
+    padding: 20px 0;
     scroll-snap-type: x mandatory;
-    padding: 2rem 0;
-    -webkit-overflow-scrolling: touch;
 }
 
 .about-page .expertise-item {
-    flex: 0 0 300px;
-    margin-right: 2rem;
-    scroll-snap-align: start;
-    background-color: white;
+    flex: 0 0 auto;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+    background-color: var(--maya-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
     border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.about-page .approach-section {
-    padding: 6rem 0;
-    background-color: white;
+    scroll-snap-align: center;
 }
 
 .about-page .approach-content {
@@ -345,37 +327,40 @@ main {
 
 .about-page .approach-step {
     flex: 0 0 200px;
-    margin: 2rem;
-    padding: 2rem;
-    background-color: var(--alice-blue);
+    height: 200px;
+    margin: 10px;
+    background-color: var(--aquamarine);
+    color: var(--egyptian-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
     border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-.about-page .approach-step:hover,
-.about-page .approach-step.active {
+.about-page .approach-step:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-.about-page .promise-section {
-    padding: 6rem 0;
-    background-color: var(--egyptian-blue);
-    color: white;
-    overflow: hidden;
+@media (max-width: 768px) {
+    .about-page .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-page .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .about-page .expertise-item,
+    .about-page .approach-step {
+        width: 150px;
+        height: 150px;
+        font-size: 1rem;
+    }
 }
 
-.about-page .promise-content {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.about-page .parallax {
-    position: absolute;
-    opacity: 0.1;
-}
 
 /* Responsive styles */
 @media (max-width: 768px) {
