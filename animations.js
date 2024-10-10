@@ -129,33 +129,166 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
-    // About page specific animations
-    if (document.body.classList.contains('about-page')) {
-        gsap.from('.page-header h1', {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: 'power3.out',
+
+// About page specific animations
+if (document.body.classList.contains('about-page')) {
+    // Hero section animation
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        heroSection.appendChild(canvas);
+
+        let particles = [];
+        let meshPoints = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initMeshPoints();
+        }
+
+        function initMeshPoints() {
+            meshPoints = [];
+            const meshSize = 50;
+            const meshSpacing = Math.max(canvas.width, canvas.height) / meshSize;
+            for (let x = 0; x < canvas.width; x += meshSpacing) {
+                for (let y = 0; y < canvas.height; y += meshSpacing) {
+                    meshPoints.push({ x, y, baseY: y });
+                }
+            }
+        }
+
+        function createParticle(x, y) {
+            return {
+                x,
+                y,
+                size: Math.random() * 3 + 1,
+                speedX: Math.random() * 3 - 1.5,
+                speedY: Math.random() * 3 - 1.5
+            };
+        }
+
+        function drawParticles() {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            particles.forEach(particle => {
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        function updateParticles() {
+            particles.forEach(particle => {
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                if (particle.size > 0.2) particle.size -= 0.1;
+            });
+            particles = particles.filter(particle => particle.size > 0.2);
+        }
+
+        function drawMesh(mouseX, mouseY) {
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.beginPath();
+            meshPoints.forEach(point => {
+                const dx = mouseX - point.x;
+                const dy = mouseY - point.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const maxDistance = 200;
+                
+                if (distance < maxDistance) {
+                    point.y = point.baseY + (maxDistance - distance) / 2;
+                } else {
+                    point.y += (point.baseY - point.y) * 0.1;
+                }
+
+                ctx.moveTo(point.x, point.y);
+                ctx.lineTo(point.x + meshSpacing, point.y);
+                ctx.moveTo(point.x, point.y);
+                ctx.lineTo(point.x, point.y + meshSpacing);
+            });
+            ctx.stroke();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawMesh(mouseX, mouseY);
+            updateParticles();
+            drawParticles();
+            requestAnimationFrame(animate);
+        }
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        canvas.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            particles.push(createParticle(mouseX, mouseY));
         });
 
-        gsap.from('.page-header p', {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            delay: 0.3,
-            ease: 'power3.out',
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        animate();
+    }
+
+    // Expertise section horizontal scroll
+    const expertiseSection = document.querySelector('.expertise-section');
+    if (expertiseSection) {
+        const scrollContainer = expertiseSection.querySelector('.expertise-scroll');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
         });
 
-        gsap.from('.expertise-item h3', {
-            textContent: 0,
-            duration: 2,
-            ease: "power1.inOut",
-            snap: { textContent: 1 },
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: '.expertise-grid',
-                start: "top 80%",
+        scrollContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 3;
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+    }
+
+    // Approach section interactive elements
+    const approachSection = document.querySelector('.approach-section');
+    if (approachSection) {
+        const steps = approachSection.querySelectorAll('.approach-step');
+        steps.forEach(step => {
+            step.addEventListener('click', () => {
+                steps.forEach(s => s.classList.remove('active'));
+                step.classList.add('active');
+            });
+        });
+    }
+
+    // Promise section parallax effect
+    const promiseSection = document.querySelector('.promise-section');
+    if (promiseSection) {
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            const sectionTop = promiseSection.offsetTop;
+            const sectionHeight = promiseSection.offsetHeight;
+            if (scrollPosition > sectionTop - window.innerHeight && scrollPosition < sectionTop + sectionHeight) {
+                const parallaxElements = promiseSection.querySelectorAll('.parallax');
+                parallaxElements.forEach(el => {
+                    const speed = el.dataset.speed;
+                    el.style.transform = `translateY(${(scrollPosition - sectionTop) * speed}px)`;
+                });
             }
         });
     }
-});
+}
