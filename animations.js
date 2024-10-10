@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
 
+
 // About page specific animations
 if (document.body.classList.contains('about-page')) {
     // Hero section animation

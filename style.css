@@ -38,7 +38,7 @@ header {
     transition: background 0.3s ease;
 }
 
-.child-page header {
+.child-page header, .about-page header {
     background-color: var(--egyptian-blue);
 }
 
@@ -88,11 +88,12 @@ main {
     padding-top: 0;
 }
 
-#hero {
+#hero, .hero-section {
     position: relative;
     height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, var(--egyptian-blue), var(--maya-blue));
     overflow: hidden;
 }
@@ -104,16 +105,18 @@ main {
     color: var(--alice-blue);
 }
 
-#hero h1 {
+#hero h1, .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     line-height: 1.2;
+    color: var(--alice-blue);
 }
 
-#hero h2 {
+#hero h2, .hero-content h2 {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     font-weight: 400;
+    color: var(--alice-blue);
 }
 
 #benefits {
@@ -244,56 +247,27 @@ main {
     flex-shrink: 0;
 }
 
-
 /* About page specific styles */
-.page-header {
-    background-color: var(--maya-blue);
-    padding: 4rem 0;
-    text-align: center;
-}
-
-.page-header h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.page-header p {
-    font-size: 1.2rem;
-    color: var(--egyptian-blue);
-}
-
-.expertise-item h3 {
-    font-size: 3rem;
-    color: var(--aquamarine);
-    margin-bottom: 1rem;
-}
-
-/* New About page specific styles */
-/* Additional About page styles */
 .about-page {
     background-color: var(--alice-blue);
-}
-
-.about-page .hero-section {
-    background: linear-gradient(135deg, var(--egyptian-blue), var(--maya-blue));
-    color: white;
-    text-align: center;
-    padding: 100px 0;
-}
-
-.about-page .hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
-
-.about-page .hero-content h2 {
-    font-size: 2rem;
-    font-weight: 300;
 }
 
 .about-page .mission-section,
 .about-page .promise-section {
     background-color: white;
+}
+
+.about-page .mission-content,
+.about-page .promise-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.about-page .expertise-section {
+    background-color: var(--alice-blue);
 }
 
 .about-page .expertise-scroll {
@@ -317,6 +291,10 @@ main {
     font-weight: bold;
     border-radius: 10px;
     scroll-snap-align: center;
+}
+
+.about-page .approach-section {
+    background-color: white;
 }
 
 .about-page .approach-content {
@@ -344,32 +322,14 @@ main {
     transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-    .about-page .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .about-page .hero-content h2 {
-        font-size: 1.5rem;
-    }
-
-    .about-page .expertise-item,
-    .about-page .approach-step {
-        width: 150px;
-        height: 150px;
-        font-size: 1rem;
-    }
-}
-
-
 /* Responsive styles */
 @media (max-width: 768px) {
-    h1, .page-header h1 {
+    h1, .page-header h1, .hero-content h1 {
         font-size: 2.5rem;
     }
 
-    h2 {
-        font-size: 2rem;
+    h2, .hero-content h2 {
+        font-size: 1.5rem;
     }
 
     #benefits {
@@ -397,7 +357,6 @@ main {
         flex-direction: column;
     }
 
-    /* New responsive styles for About page */
     .about-page .expertise-scroll {
         padding: 1rem 0;
     }
@@ -415,6 +374,13 @@ main {
 
     .about-page .mission-content,
     .about-page .promise-content {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+    }
+
+    .about-page .expertise-item,
+    .about-page .approach-step {
+        width: 150px;
+        height: 150px;
+        font-size: 1rem;
     }
 }
