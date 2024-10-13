@@ -1,52 +1,70 @@
-<div>
-    <div class="container">
-        <a href="index.html" class="logo">tattbhav tech</a>
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="services.html">Services</a>
-            <a href="process.html">Our Process</a>
-            <a href="index.html#contact">Contact</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Tattbhav Tech</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+</head>
+<body class="child-page about-page">
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">tattbhav tech</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="process.html">Our Process</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
         </nav>
-    </div>
-</div>
+    </header>
 
-<main role="main">
-    <section id="hero" class="section hero-section">
-        <canvas id="hero-canvas"></canvas>
-        <div id="hero-content"></div>
-    </section>
+    <main role="main">
+        <section id="hero" class="section hero-section">
+            <canvas id="hero-canvas"></canvas>
+            <div id="hero-content" class="hero-content">
+            </div>
+        </section>
 
-    <section id="mission" class="section mission-section">
+        <section id="mission" class="section mission-section">
+            <div class="container">
+                <h2>Our Mission</h2>
+                <div id="mission-content"></div>
+            </div>
+        </section>
+
+        <section id="expertise" class="section expertise-section">
+            <div class="container">
+                <h2>Our Expertise</h2>
+                <div id="expertise-content"></div>
+                <div class="expertise-scroll"></div>
+            </div>
+        </section>
+
+        <section id="approach" class="section approach-section">
+            <div class="container">
+                <h2>Our Approach</h2>
+                <div id="approach-content"></div>
+            </div>
+        </section>
+
+        <section id="promise" class="section promise-section">
+            <div class="container">
+                <h2>Our Promise</h2>
+                <div id="promise-content"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
         <div class="container">
-            <h2>Our Mission</h2>
-            <div id="mission-content"></div>
+            <p>&copy; 2024 Tattbhav Tech. All rights reserved.</p>
         </div>
-    </section>
+    </footer>
 
-    <section id="expertise" class="section expertise-section">
-        <div class="container">
-            <h2>Our Expertise</h2>
-            <div id="expertise-content"></div>
-            <div class="expertise-scroll"></div>
-        </div>
-    </section>
-
-    <section id="approach" class="section approach-section">
-        <div class="container">
-            <h2>Our Approach</h2>
-            <div id="approach-content"></div>
-        </div>
-    </section>
-
-    <section id="promise" class="section promise-section">
-        <div class="container">
-            <h2>Our Promise</h2>
-            <div id="promise-content"></div>
-        </div>
-    </section>
-</main>
-
-<div class="container">
-    © 2024 Tattbhav Tech. All rights reserved.
-</div>
+    <script src="animations.js"></script>
+</body>
+</html>

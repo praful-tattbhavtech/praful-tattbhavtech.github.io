@@ -128,237 +128,237 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
+    
+    // About page animations
     if (document.body.classList.contains('about-page')) {
-        // Content for animations
-        const content = {
-            hero: {
-                headline: "From Blueprint to Breakthrough",
-                subheadline: "Tech That's Truly Yours",
-                tagline: "Invest once, own forever: Scalable solutions without recurring fees"
-            },
-            mission: "Empowering SMBs with affordable, cutting-edge technology to compete and thrive in the digital age.",
-            expertise: {
-                text: "Our seasoned experts bring together decades of experience in software development and business operations. This unique blend allows us to create solutions that not only solve technical challenges but also drive real business growth. Our team's collective experience spans across Fortune 500 companies, tech giants, global sports organizations, multinational banks, FMCG leaders, and international non-profits. From steel to social media, from banking to wholesale retail, we've seen it all – and we're here to bring that expertise to your business.",
-                items: ["Fortune 500", "Tech Giants", "Global Sports", "Multinational Banks", "FMCG Leaders", "International Non-profits"]
-            },
-            approach: {
-                text: "At Tattbhav Tech, we believe in empowering your business, not locking you into costly contracts. Our unique 'invest once, own forever' model means you get a custom-built solution tailored to your needs, with the freedom to modify and scale as your business grows.",
-                steps: [
-                    { title: "Invest Once", description: "Pay for discovery and development, own the software forever." },
-                    { title: "Tailored Solutions", description: "Custom-built to fit your specific needs and requirements." },
-                    { title: "Scalable Growth", description: "Solutions that evolve with your business, without recurring fees." },
-                    { title: "True Ownership", description: "Your codebase, your asset - free from vendor lock-in." }
-                ]
-            },
-            promise: "We've witnessed firsthand how large corporations leverage technology to drive immense value. Our commitment is to bring that same level of technological advantage to SMBs, without the enterprise-level price tag. With Tattbhav Tech, you're not just getting software – you're gaining a competitive edge that grows with your business."
-        };
+    const content = {
+        hero: {
+            headline: "From Blueprint to Breakthrough",
+            subheadline: "Tech That's Truly Yours",
+            tagline: "Invest once, own forever: Scalable solutions without recurring fees"
+        },
+        mission: "Empowering SMBs with affordable, cutting-edge technology to compete and thrive in the digital age.",
+        expertise: {
+            text: "Our seasoned experts bring together decades of experience in software development and business operations. This unique blend allows us to create solutions that not only solve technical challenges but also drive real business growth. Our team's collective experience spans across Fortune 500 companies, tech giants, global sports organizations, multinational banks, FMCG leaders, and international non-profits. From steel to social media, from banking to wholesale retail, we've seen it all – and we're here to bring that expertise to your business.",
+            items: ["Fortune 500", "Tech Giants", "Global Sports", "Multinational Banks", "FMCG Leaders", "International Non-profits"]
+        },
+        approach: {
+            text: "At Tattbhav Tech, we believe in empowering your business, not locking you into costly contracts. Our 'invest once, own forever' model means you get a custom-built solution tailored to your needs, with the freedom to modify and scale as your business grows.",
+            steps: [
+                { title: "Invest Once", description: "Pay for discovery and development, own the software forever." },
+                { title: "Tailored Solutions", description: "Custom-built to fit your specific needs and requirements." },
+                { title: "Scalable Growth", description: "Solutions that evolve with your business, without recurring fees." },
+                { title: "True Ownership", description: "Your codebase, your asset - free from vendor lock-in." }
+            ]
+        },
+        promise: "We've witnessed firsthand how large corporations leverage technology to drive immense value. Our commitment is to bring that same level of technological advantage to SMBs, without the enterprise-level price tag. With Tattbhav Tech, you're not just getting software – you're gaining a competitive edge that grows with your business."
+    };
 
-        // Hero section animation
-        const heroSection = document.querySelector('.hero-section');
-        const heroCanvas = document.getElementById('hero-canvas');
-        const heroContent = document.getElementById('hero-content');
+    const heroSection = document.querySelector('.hero-section');
+    const heroCanvas = document.getElementById('hero-canvas');
+    const heroContent = document.getElementById('hero-content');
 
-        if (heroCanvas && heroContent) {
-            const ctx = heroCanvas.getContext('2d');
+    if (heroCanvas && heroContent) {
+        const ctx = heroCanvas.getContext('2d');
+        let particles = [];
+        let meshPoints = [];
+        let mousePosition = { x: 0, y: 0 };
 
-            let particles = [];
-            let meshPoints = [];
-            let mousePosition = { x: 0, y: 0 };
+        function resizeCanvas() {
+            heroCanvas.width = window.innerWidth;
+            heroCanvas.height = window.innerHeight;
+            initMeshPoints();
+        }
 
-            function resizeCanvas() {
-                heroCanvas.width = window.innerWidth;
-                heroCanvas.height = window.innerHeight;
-                initMeshPoints();
-            }
-
-            function initMeshPoints() {
-                meshPoints = [];
-                const meshSize = 50;
-                const meshSpacing = Math.max(heroCanvas.width, heroCanvas.height) / meshSize;
-                for (let x = 0; x < heroCanvas.width; x += meshSpacing) {
-                    for (let y = 0; y < heroCanvas.height; y += meshSpacing) {
-                        meshPoints.push({ x, y, baseY: y });
-                    }
+        function initMeshPoints() {
+            meshPoints = [];
+            const meshSize = 50;
+            const meshSpacing = Math.max(heroCanvas.width, heroCanvas.height) / meshSize;
+            for (let x = 0; x < heroCanvas.width; x += meshSpacing) {
+                for (let y = 0; y < heroCanvas.height; y += meshSpacing) {
+                    meshPoints.push({ x, y, baseY: y });
                 }
             }
+        }
 
-            class Particle {
-                constructor(x, y) {
-                    this.x = x;
-                    this.y = y;
-                    this.size = Math.random() * 3 + 1;
-                    this.speedX = Math.random() * 3 - 1.5;
-                    this.speedY = Math.random() * 3 - 1.5;
-                }
-
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    if (this.size > 0.2) this.size -= 0.1;
-                }
-
-                draw() {
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
             }
 
-            function animate() {
-                ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.1;
+            }
 
-                // Draw mesh
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            draw() {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
                 ctx.beginPath();
-                for (let point of meshPoints) {
-                    const dx = mousePosition.x - point.x;
-                    const dy = mousePosition.y - point.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    const maxDistance = 200;
-                    
-                    if (distance < maxDistance) {
-                        point.y = point.baseY + (maxDistance - distance) / 2;
-                    } else {
-                        point.y += (point.baseY - point.y) * 0.1;
-                    }
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
 
-                    ctx.moveTo(point.x, point.y);
-                    ctx.lineTo(point.x + heroCanvas.width / 50, point.y);
-                    ctx.moveTo(point.x, point.y);
-                    ctx.lineTo(point.x, point.y + heroCanvas.height / 50);
-                }
-                ctx.stroke();
+        function animate() {
+            ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
 
-                // Update and draw particles
-                for (let i = particles.length - 1; i >= 0; i--) {
-                    particles[i].update();
-                    particles[i].draw();
-                    if (particles[i].size <= 0.2) {
-                        particles.splice(i, 1);
-                    }
+            // Draw mesh
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.beginPath();
+            for (let point of meshPoints) {
+                const dx = mousePosition.x - point.x;
+                const dy = mousePosition.y - point.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const maxDistance = 100;
+                
+                if (distance < maxDistance) {
+                    point.y = point.baseY + (maxDistance - distance) / 1.5;
+                } else {
+                    point.y += (point.baseY - point.y) * 0.1;
                 }
 
-                requestAnimationFrame(animate);
+                ctx.moveTo(point.x, point.y);
+                ctx.lineTo(point.x + heroCanvas.width / 50, point.y);
+                ctx.moveTo(point.x, point.y);
+                ctx.lineTo(point.x, point.y + heroCanvas.height / 50);
+            }
+            ctx.stroke();
+
+            // Update and draw particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                particles[i].update();
+                particles[i].draw();
+                if (particles[i].size <= 0.2) {
+                    particles.splice(i, 1);
+                }
             }
 
-            function initHeroAnimation() {
-                resizeCanvas();
-                animate();
-
-                // Create and animate hero text
-                const headlineElement = document.createElement('h1');
-                const subheadlineElement = document.createElement('h2');
-                const taglineElement = document.createElement('p');
-
-                heroContent.appendChild(headlineElement);
-                heroContent.appendChild(subheadlineElement);
-                heroContent.appendChild(taglineElement);
-
-                gsap.set([headlineElement, subheadlineElement, taglineElement], { opacity: 0, y: 50 });
-
-                gsap.to(headlineElement, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: 'power3.out',
-                    onStart: () => { headlineElement.textContent = content.hero.headline; }
-                });
-
-                gsap.to(subheadlineElement, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    delay: 0.5,
-                    ease: 'power3.out',
-                    onStart: () => { subheadlineElement.textContent = content.hero.subheadline; }
-                });
-
-                gsap.to(taglineElement, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    delay: 1,
-                    ease: 'power3.out',
-                    onStart: () => { taglineElement.textContent = content.hero.tagline; }
-                });
-            }
-
-            heroCanvas.addEventListener('mousemove', (e) => {
-                mousePosition.x = e.clientX;
-                mousePosition.y = e.clientY;
-                particles.push(new Particle(e.clientX, e.clientY));
-            });
-
-            window.addEventListener('resize', resizeCanvas);
-            initHeroAnimation();
+            requestAnimationFrame(animate);
         }
 
-        // Animate other sections
-        function animateSection(sectionId, textContent) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                const contentElement = document.createElement('p');
-                contentElement.textContent = textContent;
-                section.appendChild(contentElement);
+        function initHeroAnimation() {
+            resizeCanvas();
+            animate();
 
-                gsap.from(contentElement, {
+            // Create and animate hero text
+            heroContent.innerHTML = '';
+            const headlineElement = document.createElement('h1');
+            const subheadlineElement = document.createElement('h2');
+            const taglineElement = document.createElement('p');
+
+            heroContent.appendChild(headlineElement);
+            heroContent.appendChild(subheadlineElement);
+            heroContent.appendChild(taglineElement);
+
+            // Animate headline letter by letter
+            content.hero.headline.split('').forEach((letter, index) => {
+                const span = document.createElement('span');
+                span.textContent = letter;
+                headlineElement.appendChild(span);
+
+                gsap.from(span, {
                     opacity: 0,
-                    y: 50,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top 80%',
-                        end: 'bottom 20%',
-                        toggleActions: 'play none none reverse'
-                    }
-                });
-            }
-        }
-
-        animateSection('mission-content', content.mission);
-        animateSection('expertise-content', content.expertise.text);
-        animateSection('approach-content', content.approach.text);
-        animateSection('promise-content', content.promise);
-
-        // Expertise section horizontal scroll
-        const expertiseScroll = document.querySelector('.expertise-scroll');
-        if (expertiseScroll) {
-            content.expertise.items.forEach(item => {
-                const itemElement = document.createElement('div');
-                itemElement.className = 'expertise-item';
-                itemElement.textContent = item;
-                expertiseScroll.appendChild(itemElement);
-            });
-
-            // ... (keep existing expertise scroll event listeners)
-        }
-
-        // Approach steps animation
-        const approachContent = document.getElementById('approach-content');
-        if (approachContent) {
-            const stepsContainer = document.createElement('div');
-            stepsContainer.className = 'approach-steps';
-            approachContent.appendChild(stepsContainer);
-
-            content.approach.steps.forEach(step => {
-                const stepElement = document.createElement('div');
-                stepElement.className = 'approach-step';
-                stepElement.innerHTML = `<h3>${step.title}</h3><p>${step.description}</p>`;
-                stepsContainer.appendChild(stepElement);
-
-                gsap.from(stepElement, {
-                    opacity: 0,
-                    y: 50,
-                    duration: 0.8,
-                    scrollTrigger: {
-                        trigger: stepElement,
-                        start: 'top 80%',
-                        end: 'bottom 20%',
-                        toggleActions: 'play none none reverse'
-                    }
+                    x: -100,
+                    duration: 0.5,
+                    delay: index * 0.05,
+                    ease: 'power3.out'
                 });
             });
+
+            // Animate subheadline and tagline
+            gsap.from(subheadlineElement, {
+                opacity: 0,
+                x: 100,
+                duration: 1,
+                delay: 1,
+                ease: 'power3.out',
+                onStart: () => { subheadlineElement.textContent = content.hero.subheadline; }
+            });
+
+            gsap.from(taglineElement, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 1.5,
+                ease: 'power3.out',
+                onStart: () => { taglineElement.textContent = content.hero.tagline; }
+            });
         }
+
+        heroCanvas.addEventListener('mousemove', (e) => {
+            const rect = heroCanvas.getBoundingClientRect();
+            mousePosition.x = e.clientX - rect.left;
+            mousePosition.y = e.clientY - rect.top;
+            particles.push(new Particle(mousePosition.x, mousePosition.y));
+        });
+
+        window.addEventListener('resize', resizeCanvas);
+        initHeroAnimation();
     }
+
+    // Animate other sections
+    function animateSection(sectionId, textContent) {
+        const section = document.getElementById(sectionId);
+        const contentElement = document.createElement('p');
+        contentElement.textContent = textContent;
+        section.appendChild(contentElement);
+
+        gsap.from(contentElement, {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            scrollTrigger: {
+                trigger: section,
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+    }
+
+    animateSection('mission-content', content.mission);
+    animateSection('expertise-content', content.expertise.text);
+    animateSection('approach-content', content.approach.text);
+    animateSection('promise-content', content.promise);
+
+    // Expertise section horizontal scroll
+    const expertiseScroll = document.querySelector('.expertise-scroll');
+    content.expertise.items.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'expertise-item';
+        itemElement.textContent = item;
+        expertiseScroll.appendChild(itemElement);
+    });
+
+    // Approach steps animation
+    const approachContent = document.getElementById('approach-content');
+    const stepsContainer = document.createElement('div');
+    stepsContainer.className = 'approach-steps';
+    approachContent.appendChild(stepsContainer);
+
+    content.approach.steps.forEach(step => {
+        const stepElement = document.createElement('div');
+        stepElement.className = 'approach-step';
+        stepElement.innerHTML = `<h3>${step.title}</h3><p>${step.description}</p>`;
+        stepsContainer.appendChild(stepElement);
+
+        gsap.from(stepElement, {
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: stepElement,
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+    });
+    }
+
 });

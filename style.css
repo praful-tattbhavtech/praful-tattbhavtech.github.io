@@ -38,7 +38,7 @@ header {
     transition: background 0.3s ease;
 }
 
-.child-page header, .about-page header {
+.child-page header {
     background-color: var(--egyptian-blue);
 }
 
@@ -54,7 +54,6 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
 }
 
 .logo {
@@ -250,6 +249,37 @@ main {
 /* About page specific styles */
 .about-page {
     background-color: var(--alice-blue);
+}
+
+.about-page main {
+    padding-top: 0;
+}
+
+
+.about-page .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--alice-blue);
+    width: 80%;
+    max-width: 800px;
+}
+
+
+.about-page .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-page .hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-page .hero-content p {
+    font-size: 1.2rem;
 }
 
 .about-page .mission-section,
