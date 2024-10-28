@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Sitemap: https://tattbhavtech.in/sitemap.xml
+
+# Block access to admin areas
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /admin/
+Disallow: /private/
+
+# Allow search engines to access CSS, JS, and Images
+Allow: /css/
+Allow: /js/
+Allow: /images/
